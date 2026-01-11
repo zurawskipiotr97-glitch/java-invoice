@@ -28,11 +28,12 @@ public class Invoice {
     }
 
     public BigDecimal getTax() {
-        BigDecimal tax = BigDecimal.ZERO;
+        BigDecimal totalTax = BigDecimal.ZERO;
         for (Product product : products) {
-            tax = tax.add(product.getTaxPercent());
+            BigDecimal taxValue = product.getPriceWithTax().subtract(product.getPrice());
+            totalTax = totalTax.add(taxValue);
         }
-        return tax;
+        return totalTax;
     }
 
     public BigDecimal getTotal() {

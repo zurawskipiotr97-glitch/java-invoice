@@ -17,7 +17,8 @@ public class Invoice {
     }
 
     public BigDecimal getSubtotal() {
-        return null;
+        BigDecimal subtotal = BigDecimal.ZERO;
+        return subtotal;
     }
 
     public BigDecimal getTax() {

@@ -10,7 +10,7 @@ public class Invoice {
     private Collection<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
-        // TODO: implement
+        products.add(product);
     }
 
     public void addProduct(Product product, Integer quantity) {

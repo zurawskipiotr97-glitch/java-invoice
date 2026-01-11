@@ -1,12 +1,13 @@
 package pl.edu.agh.mwo.invoice;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private Collection<Product> products;
+    private Collection<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
         // TODO: implement
@@ -18,6 +19,9 @@ public class Invoice {
 
     public BigDecimal getSubtotal() {
         BigDecimal subtotal = BigDecimal.ZERO;
+        for (Product product : products) {
+            subtotal = subtotal.add(product.getPrice());
+        }
         return subtotal;
     }
 

@@ -10,6 +10,9 @@ public class Invoice {
     private Collection<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
+        if (product == null) {
+            throw new IllegalArgumentException();
+        }
         products.add(product);
     }
 

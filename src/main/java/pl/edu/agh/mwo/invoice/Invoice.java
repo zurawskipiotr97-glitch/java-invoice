@@ -7,7 +7,7 @@ import java.util.Collection;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private Collection<Product> products = new ArrayList<>();
+    private final Collection<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
         if (product == null) {
@@ -17,7 +17,7 @@ public class Invoice {
     }
 
     public void addProduct(Product product, Integer quantity) {
-        if (quantity <=0 || product == null) {
+        if (quantity <= 0 || product == null) {
             throw new IllegalArgumentException();
         }
         for (int i = 0; i < quantity; i++) {

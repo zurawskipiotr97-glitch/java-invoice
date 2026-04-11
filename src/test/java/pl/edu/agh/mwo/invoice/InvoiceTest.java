@@ -125,4 +125,19 @@ public class InvoiceTest {
     public void testAddingNullProduct() {
         invoice.addProduct(null);
     }
+
+    @Test
+    public void testNumberOfInvoice() {
+        Invoice invoice2= new Invoice();
+        Invoice invoice3= new Invoice();
+        String currentInvoice = invoice2.getNumber();
+        String[] parts =  currentInvoice.split("/");
+        String prefix = parts[0];
+        int nextNumber = Integer.parseInt(parts[1]) + 1;
+
+        String expected = prefix + "/" + nextNumber;
+        String actual = invoice3.getNumber();
+
+        Assert.assertEquals(expected, actual);
+    }
 }

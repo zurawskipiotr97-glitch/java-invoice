@@ -133,6 +133,9 @@ public class InvoiceTest {
         String currentInvoice = invoice2.getNumber();
         String[] parts =  currentInvoice.split("/");
         String prefix = parts[0];
+
+        Assert.assertTrue(Integer.parseInt(parts[1]) > 0);
+
         int nextNumber = Integer.parseInt(parts[1]) + 1;
 
         String expected = prefix + "/" + nextNumber;
@@ -140,4 +143,12 @@ public class InvoiceTest {
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testTheSameInvoiceHasTheSameNumber() {
+        Invoice invoice2= new Invoice();
+        Assert.assertEquals(invoice2.getNumber(), invoice2.getNumber());
+    }
 }
+
+

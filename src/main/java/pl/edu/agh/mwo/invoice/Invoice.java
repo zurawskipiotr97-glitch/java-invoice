@@ -7,7 +7,7 @@ import java.util.Collection;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private static int nextId = 1;
+    private static int nextId = 0;
     private final String number;
 
     private final Collection<Product> products = new ArrayList<>();

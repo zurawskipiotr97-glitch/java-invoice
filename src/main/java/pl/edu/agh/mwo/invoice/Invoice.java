@@ -3,6 +3,8 @@ package pl.edu.agh.mwo.invoice;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
@@ -62,13 +64,28 @@ public class Invoice {
     }
 
     public String printProducts() {
+        Map<Product, Integer> quantities = new HashMap<>();
+
         StringBuilder sb = new StringBuilder();
 
         sb.append(number).append("\n");
 
         for (Product product : products) {
+
+            if (quantities.containsKey(product)) {
+                Integer quantity = quantities.get(product);
+                quantities.put(product, quantity + 1);
+            } else {
+                quantities.put(product, 1);
+            }
+        }
+
+        for (Product product : quantities.keySet()) {
+
             sb.append(product.getName())
-                    .append(", 1, ")
+                    .append(", ")
+                    .append(quantities.get(product))
+                    .append(", ")
                     .append(product.getPrice())
                     .append("\n");
         }

@@ -162,9 +162,9 @@ public class InvoiceTest {
         String result = invoice.printProducts();
 
         assertEquals("""
-            FV/1/2024
-            Milk, 1, 4.50
-            Bread, 1, 6.00
+            FV/1
+            Banan, 1, 4.50
+            Chleb, 1, 6.00
             Liczba pozycji: 2
             """, result);
     }

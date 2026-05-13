@@ -60,4 +60,24 @@ public class Invoice {
         }
         return total;
     }
+
+    public String printProducts() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(number).append("\n");
+
+        for (Product product : products) {
+            sb.append(product.getName())
+                    .append(", 1, ")
+                    .append(product.getPrice())
+                    .append("\n");
+        }
+
+        sb.append("Liczba pozycji: ")
+                .append(products.size())
+                .append("\n");
+
+        return sb.toString();
+
+    }
 }

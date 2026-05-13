@@ -13,6 +13,8 @@ import pl.edu.agh.mwo.invoice.product.OtherProduct;
 import pl.edu.agh.mwo.invoice.product.Product;
 import pl.edu.agh.mwo.invoice.product.TaxFreeProduct;
 
+import static org.junit.Assert.assertEquals;
+
 public class InvoiceTest {
     private Invoice invoice;
 
@@ -141,13 +143,30 @@ public class InvoiceTest {
         String expected = prefix + "/" + nextNumber;
         String actual = invoice3.getNumber();
 
-        Assert.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testTheSameInvoiceHasTheSameNumber() {
         Invoice invoice2= new Invoice();
-        Assert.assertEquals(invoice2.getNumber(), invoice2.getNumber());
+        assertEquals(invoice2.getNumber(), invoice2.getNumber());
+    }
+
+    @Test
+    public void testPrintInvoiceProducts() {
+        Invoice invoice = new Invoice();
+
+        invoice.addProduct(new TaxFreeProduct("Banan", new BigDecimal("4.50")));
+        invoice.addProduct(new DairyProduct("Chleb", new BigDecimal("6.00")));
+
+        String result = invoice.printProducts();
+
+        assertEquals("""
+            FV/1/2024
+            Milk, 1, 4.50
+            Bread, 1, 6.00
+            Liczba pozycji: 2
+            """, result);
     }
 }
 

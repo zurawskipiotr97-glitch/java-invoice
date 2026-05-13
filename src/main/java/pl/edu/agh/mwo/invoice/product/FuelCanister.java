@@ -4,12 +4,10 @@ import java.math.BigDecimal;
 
 public class FuelCanister extends Product {
 
-    public FuelCanister(String name, BigDecimal price) {
-        super(name, price, BigDecimal.ZERO);
-    }
+    private static final BigDecimal TAX = BigDecimal.ZERO;
+    private static final BigDecimal EXCISE_TAX = new BigDecimal("5.56");
 
-    @Override
-    public BigDecimal getPriceWithTax() {
-        return super.getPriceWithTax().add(new BigDecimal("5.56"));
+    public FuelCanister(String name, BigDecimal price) {
+        super(name, price, TAX, EXCISE_TAX);
     }
 }

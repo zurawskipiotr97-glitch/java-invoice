@@ -168,6 +168,28 @@ public class InvoiceTest {
             Liczba pozycji: 2
             """, result);
     }
+
+    @Test
+    public void testQuantityOfTheSameProductsFewTimes() {
+        Invoice invoice = new Invoice();
+
+        invoice.addProduct(new TaxFreeProduct("Banan", new BigDecimal("4.50")));
+        invoice.addProduct(new TaxFreeProduct("Banan", new BigDecimal("4.50")));
+        invoice.addProduct(new DairyProduct("Chleb", new BigDecimal("6.00")));
+        invoice.addProduct(new DairyProduct("Draze Korsarze", new BigDecimal("3.00")));
+        invoice.addProduct(new DairyProduct("Draze Korsarze", new BigDecimal("3.00")));
+        invoice.addProduct(new DairyProduct("Draze Korsarze", new BigDecimal("3.00")));
+
+        String result = invoice.printProducts();
+
+        assertEquals("""
+            FV/1
+            Banan, 2, 4.50
+            Chleb, 1, 6.00
+            Draze Korsarze, 3, 3.00
+            Liczba pozycji: 6
+            """, result);
+    }
 }
 
 

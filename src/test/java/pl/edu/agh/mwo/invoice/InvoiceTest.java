@@ -191,6 +191,22 @@ public class InvoiceTest {
                 Liczba pozycji: 6
                 """));
     }
+
+    @Test
+    public void testBottleOfWineAkcyza() {
+        Product product = new BottleOfWine("Mamrot", new BigDecimal("100.00"));
+
+        Assert.assertThat(product.getTaxPercent(), Matchers.comparesEqualTo(new BigDecimal("0.23")));
+        Assert.assertThat(product.getPriceWithTax(), Matchers.comparesEqualTo(new BigDecimal("128.56")));
+    }
+
+    @Test
+    public void testFuelCanisterAkcyzaJestPodatekZero() {
+        Product product = new FuelCanister("Paliwo Ciekle", new BigDecimal("100.00"));
+
+        Assert.assertThat(product.getTaxPercent(), Matchers.comparesEqualTo(BigDecimal.ZERO));
+        Assert.assertThat(product.getPriceWithTax(), Matchers.comparesEqualTo(new BigDecimal("105.56")));
+    }
 }
 
 
